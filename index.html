@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha384-ezHYg5FPU8AAeZLQQlWb7R2XMTvm1cmMlOgtOrTKBQUa6IYYqRlW4dVoZGVjUEhDP"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="box">
+          <div class="inputted-numbers" id="inputtedNumbers" contenteditable="false"></div>
+
+          <button class="numbers zero" onclick="appendToInput('0')">0</button>
+          <button class="numbers one" onclick="appendToInput('1')">1</button>
+          <button class="numbers two" onclick="appendToInput('2')">2</button>
+          <button class="numbers three" onclick="appendToInput('3')">3</button>
+          <button class="numbers four" onclick="appendToInput('4')">4</button>
+          <button class="numbers five" onclick="appendToInput('5')">5</button>
+          <button class="numbers six" onclick="appendToInput('6')">6</button>
+          <button class="numbers seven" onclick="appendToInput('7')">7</button>
+          <button class="numbers eight" onclick="appendToInput('8')">8</button>
+          <button class="numbers nine" onclick="appendToInput('9')">9</button>
+
+          <button class="dot" style="font-size: 0.5rem" onclick="appendToInput('.')">
+            <i class="fas fa-circle"></i>
+          </button>
+
+          <button class="operations c" onclick="clearInput()">
+            <i class="fas fa-c"></i>
+          </button>
+          <button class="operations times" onclick="appendToInput('*')">
+            <i class="fas fa-times"></i>
+          </button>
+          <button class="operations plus" onclick="appendToInput('+')">
+            <i class="fas fa-plus"></i>
+          </button>
+          <button class="operations minus" onclick="appendToInput('-')">
+            <i class="fas fa-minus"></i>
+          </button>
+          <button class="operations equals" onclick="calculateResult()">
+            <i class="fas fa-equals"></i>
+          </button>
+          <button class="operations backspace" onclick="backspace()">
+            <i class="fas fa-backspace"></i>
+          </button>
+          <button class="operations divide" onclick="appendToInput('/')">
+            <i class="fas fa-divide"></i>
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>

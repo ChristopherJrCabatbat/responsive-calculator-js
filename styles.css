@@ -1,0 +1,200 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(250, 244, 244);
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  position: fixed;
+  background-color: white;
+  min-height: 85vh;
+  min-width: 80vw;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "inputted-numbers inputted-numbers inputted-numbers inputted-numbers"
+    "c c c backspace"
+    "seven eight nine divide"
+    "four five six times"
+    "one two three minus"
+    "zero dot equals plus";
+  user-select: none;
+}
+
+.box > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.inputted-numbers {
+  background-color: #f2f8fc;
+  border-top: 8px solid #0072c5;
+  border-right: 2px solid #bfdcf0;
+  border-bottom: 2px solid #bfdcf0;
+  border-left: 2px solid #bfdcf0;
+  height: 12vh;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.numbers,
+.operations,
+.dot {
+  padding: 1rem 3rem;
+}
+
+.numbers:hover,
+.operations:hover,
+.dot:hover {
+  background-color: #c1c1c1;
+}
+
+.numbers,
+.dot {
+  font-size: 2.3rem;
+  background-color: #d1d1d1;
+  color: #444;
+  border: 1px solid #c1c1c1;
+}
+
+.operations {
+  background-color: #eee;
+  color: #71777d;
+  border: 1px solid #ddd;
+  font-size: 2rem;
+}
+
+.operations:hover {
+  background-color: #ddd;
+}
+
+span.equals {
+  background-color: #0072c5;
+  border-color: #0072c5;
+  color: white;
+}
+
+span.equals:hover {
+  background-color: #005b9e;
+}
+
+/* Grid area assignments */
+div.inputted-numbers {
+  grid-area: inputted-numbers;
+}
+
+button.zero {
+  grid-area: zero;
+}
+
+button.one {
+  grid-area: one;
+}
+
+button.two {
+  grid-area: two;
+}
+
+button.three {
+  grid-area: three;
+}
+
+button.four {
+  grid-area: four;
+}
+
+button.five {
+  grid-area: five;
+}
+
+button.six {
+  grid-area: six;
+}
+
+button.seven {
+  grid-area: seven;
+}
+
+button.eight {
+  grid-area: eight;
+}
+
+button.nine {
+  grid-area: nine;
+}
+
+button.dot {
+  grid-area: dot;
+}
+
+button.c {
+  grid-area: c;
+}
+
+button.times {
+  grid-area: times;
+}
+
+button.plus {
+  grid-area: plus;
+}
+
+button.minus {
+  grid-area: minus;
+}
+
+button.equals {
+  grid-area: equals;
+}
+
+button.backspace {
+  grid-area: backspace;
+}
+
+button.divide {
+  grid-area: divide;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .box {
+    width: 90vw;
+    height: 90vh;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .numbers, .operations, .dot {
+    padding: 0.7rem 1.5rem;
+  }
+
+  .inputted-numbers {
+    font-size: 1.5rem;
+    height: 10vh;
+  }
+}
+
+button:focus {
+  outline: none;
+}
