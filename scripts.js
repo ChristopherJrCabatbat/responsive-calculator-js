@@ -2,13 +2,13 @@ let inputElement = document.getElementById("inputtedNumbers");
 let errorOccurred = false;
 let numberEntered = false;
 
-// Function to append input (with switch-case)
+// Function to append input (without using Enter for anything except calculation)
 function appendToInput(value) {
     if (errorOccurred) {
         clearInput();
         errorOccurred = false;
     }
-    
+
     // Switch case for input type (numbers, operations, etc.)
     switch (value) {
         case '0': case '1': case '2': case '3': case '4':
@@ -16,9 +16,6 @@ function appendToInput(value) {
         case '+': case '-': case '*': case '/': case '.':
             inputElement.textContent += value;
             numberEntered = true;
-            break;
-        case 'Enter': // Treat Enter as equals
-            calculateResult();
             break;
         case 'Backspace': // Backspace key
             backspace();
@@ -45,9 +42,10 @@ function backspace() {
     enableDisableOperations();
 }
 
-// Function to calculate the result (with switch-case for error handling)
+// Function to calculate the result (only if the input is valid)
 function calculateResult() {
-    if (numberEntered) {
+    // Ensure that the input doesn't end with an operator before calculation
+    if (numberEntered && !/[\+\-\*\/\.]$/.test(inputElement.textContent)) {
         try {
             let result = evaluateExpression(inputElement.textContent);
             inputElement.textContent = result;
@@ -63,7 +61,7 @@ function calculateResult() {
 function evaluateExpression(expression) {
     let result;
     try {
-        result = eval(expression); // Unsafe, but used for demonstration; prefer a parser
+        result = eval(expression); // Use eval for basic calculation
     } catch (error) {
         throw new Error("Invalid expression");
     }
@@ -80,13 +78,14 @@ function enableDisableOperations() {
 
 // Keydown event listener for handling keyboard input
 document.addEventListener("keydown", function(event) {
-    const validKeys = "0123456789+-*/.";
+    const validKeys = "0123456789+-*/."; // Valid keys that are allowed for input
     if (validKeys.includes(event.key)) {
-        appendToInput(event.key);
+        appendToInput(event.key); // Only handle actual input keys
     } else if (event.key === "Enter") {
-        appendToInput("Enter");
+        event.preventDefault(); // Prevent default behavior of Enter key
+        calculateResult();  // Only perform calculation on Enter, no appending
     } else if (event.key === "Backspace") {
-        appendToInput("Backspace");
+        appendToInput("Backspace"); // Handle backspace for removal of last character
     }
 });
 
